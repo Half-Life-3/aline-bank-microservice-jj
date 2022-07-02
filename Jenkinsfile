@@ -50,7 +50,7 @@ pipeline {
 				echo 'Building Docker Image...'
 				sh "docker context use default" 
                 script{
-					app = docker.build("bankms")
+					app = docker.build("bankms-jj")
 				}
             }
         }
@@ -76,7 +76,7 @@ pipeline {
 				
                 echo 'Deploying image to cloud...'
 				script{
-					docker.withRegistry('https://445292818922.dkr.ecr.us-east-1.amazonaws.com','ecr:us-east-1:aws-creds'){
+					docker.withRegistry('127780244987.dkr.ecr.us-east-1.amazonaws.com','ecr:us-east-1:aws-team'){
 					app.push("latest")
 					}
 				}
